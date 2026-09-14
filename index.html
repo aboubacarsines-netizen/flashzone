@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashZone - Vraies Vidéos En Ligne</title>
+    <title>FlashZone - Version Finale</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,11 +31,14 @@
         <section class="left-column" id="video-feed">
             <div class="video-card">
                 <div class="video-player-container">
-                    <!-- Vrai lien fonctionnel : Intégration de Big Buck Bunny -->
-                    <iframe class="main-video" id="video-player-core" src="https://youtube.com" title="FlashZone Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- Vraie vidéo de test directe et fluide (Animation de fumée colorée) -->
+                    <video class="main-video" id="video-player-core" controls autoplay loop muted>
+                        <source src="https://mixkit.co" type="video/mp4">
+                        Ton navigateur ne prend pas en charge les vidéos.
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h2 class="video-title" id="video-title-core">BIG BUCK BUNNY - LE LAPIN SANS DROIT D'AUTEUR 🐰</h2>
+                    <h2 class="video-title" id="video-title-core">INTRO LOGO FLASHZONE OFFICIELLE - CODE ET GRAPHISME ⚡🎮</h2>
                     <div class="author-block">
                         <div class="user-profile-img">AD</div>
                         <div class="author-details">
@@ -49,7 +52,7 @@
                     <div class="like-dislike-group">
                         <button class="btn-like-yt" onclick="toggleLike(this, 'like-count-main')">👍 <span id="like-count-main">29 k</span></button>
                     </div>
-                    <button class="btn-action-yt" onclick="alert('Lien copié !')">↪️ Partager</button>
+                    <button class="btn-action-yt" onclick="alert('Lien de ton application copié !')">↪️ Partager</button>
                 </div>
             </div>
         </section>
@@ -58,19 +61,19 @@
         <aside class="right-column">
             <h3 class="sidebar-title">À suivre</h3>
             
-            <div class="suggested-video" onclick="playSuggested('https://youtube.com', 'BIG BUCK BUNNY - LE LAPIN SANS DROIT D\'AUTEUR 🐰')">
-                <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:20px;">▶️</div>
+            <div class="suggested-video" onclick="playSuggested('https://mixkit.co', 'INTRO LOGO FLASHZONE OFFICIELLE - CODE ET GRAPHISME ⚡🎮')">
+                <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:20px;">⚡</div>
                 <div class="suggested-info">
-                    <h4>BIG BUCK BUNNY - LE LAPIN SANS DROIT D'AUTEUR 🐰</h4>
-                    <p>Fondation Blender</p>
+                    <h4>INTRO LOGO FLASHZONE OFFICIELLE ⚡</h4>
+                    <p>Aboubacar Dev</p>
                 </div>
             </div>
 
-            <div class="suggested-video" onclick="playSuggested('https://youtube.com', 'TEARS OF STEEL - CLIP DE SCIENCE-FICTION LIBRE 🌍')">
-                <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:20px;">▶️</div>
+            <div class="suggested-video" onclick="playSuggested('https://mixkit.co', 'MON PREMIER DESIGN DE JEU VIDÉO POUR L\'APPLICATION 🕹️')">
+                <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:20px;">🕹️</div>
                 <div class="suggested-info">
-                    <h4>TEARS OF STEEL - CLIP DE SCIENCE-FICTION LIBRE 🌍</h4>
-                    <p>Blender Studio</p>
+                    <h4>MON PREMIER DESIGN DE JEU VIDÉO 🕹️</h4>
+                    <p>FlashZone Gaming</p>
                 </div>
             </div>
         </aside>
@@ -110,9 +113,20 @@
         }
 
         function playSuggested(url, title) {
-            // Ajoute correctement les options d'intégration à l'adresse URL
-            document.getElementById('video-player-core').src = url + "?autoplay=1&mute=1";
+            let player = document.getElementById('video-player-core');
+            player.src = url;
             document.getElementById('video-title-core').innerText = title;
+            player.load();
+            player.play();
+        }
+
+        function searchVideos() {
+            let query = document.getElementById('global-search').value.toLowerCase();
+            let cards = document.getElementsByClassName('video-card');
+            for(let card of cards) {
+                let title = card.querySelector('.video-title').innerText.toLowerCase();
+                card.style.display = title.includes(query) ? "block" : "none";
+            }
         }
     </script>
 </body>
