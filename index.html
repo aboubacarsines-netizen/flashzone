@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashZone - Vraies Vidéos En Ligne</title>
+    <title>FlashZone - En Ligne</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,31 +22,20 @@
         
         <div class="nav-right">
             <button class="nav-icon-btn" onclick="openCreateModal()">➕ Créer</button>
-            <button class="nav-icon-btn" onclick="alert('🔔 Aucune notification.')">🔔</button>
             <div class="user-profile">AD</div>
         </div>
     </header>
-
-    <!-- MENU LATÉRAL -->
-    <nav class="sidebar" id="sidebarMenu">
-        <a href="#" class="active" onclick="location.reload()">🏠 Accueil</a>
-        <a href="#" onclick="alert('Shorts bientôt disponibles !')">🩳 Shorts</a>
-        <a href="#" onclick="alert('Abonnements à venir.')">🔔 Abonnements</a>
-        <hr>
-        <a href="#" onclick="alert('Bibliothèque locale.')">📚 Bibliothèque</a>
-    </nav>
 
     <!-- CONTAINER PRINCIPAL -->
     <div class="main-layout" id="mainLayout">
         <section class="left-column" id="video-feed">
             <div class="video-card">
                 <div class="video-player-container">
-                    <video class="main-video" id="video-player-core" controls autoplay muted poster="https://unsplash.com">
-                        <source src="https://googleapis.com" type="video/mp4">
-                    </video>
+                    <!-- UTILISATION D'UN IFRAME POUR CHARGER UNE VRAIE VIDÉO SANS BUG -->
+                    <iframe class="main-video" id="video-player-core" src="https://youtube.com" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
-                    <h2 class="video-title" id="video-title-core">LE MULTI-MILLIONNAIRE FLASHZONE ET LE LAPIN GÉANT ! 🐰🚀</h2>
+                    <h2 class="video-title" id="video-title-core">BIENVENUE SUR MON PROPRE RÉSEAU SOCIAL FLASHZONE ! 🚀</h2>
                     <div class="author-block">
                         <div class="user-profile-img">AD</div>
                         <div class="author-details">
@@ -59,65 +48,36 @@
                 <div class="interaction-bar">
                     <div class="like-dislike-group">
                         <button class="btn-like-yt" onclick="toggleLike(this, 'like-count-main')">👍 <span id="like-count-main">29 k</span></button>
-                        <button class="btn-dislike-yt" onclick="toggleDislike(this)">👎</button>
                     </div>
-                    <button class="btn-action-yt" onclick="alert('Lien copié ! Partage ton projet à tes proches.')">↪️ Partager</button>
-                </div>
-                <div class="comments-section">
-                    <h3>Commentaires</h3>
-                    <div class="comment-form">
-                        <input type="text" class="comment-input-field" placeholder="Ajouter un commentaire public...">
-                        <button class="btn-comment-yt" onclick="addComment(this)">Ajouter</button>
-                    </div>
-                    <div class="comments-list"></div>
+                    <button class="btn-action-yt" onclick="alert('Lien copié !')">↪️ Partager</button>
                 </div>
             </div>
         </section>
 
-        <!-- COLONNE DROITE : LES VRAIES SUGGESTIONS DE VIDÉOS -->
+        <!-- DROITE -->
         <aside class="right-column">
             <h3 class="sidebar-title">À suivre</h3>
-            
-            <!-- Vidéo Suggérée 1 -->
-            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'COMMENT S\'ENTRAINER A CODER COMME UN PRO À 11 ANS 💻')">
-                <div class="thumbnail">
-                    <video src="https://googleapis.com" muted></video>
-                </div>
+            <div class="suggested-video" onclick="playSuggested('https://youtube.com', 'COMMENT CHARGER ET LIRE DU FLASH SUR INTERNET 🎮')">
+                <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:24px;">▶️</div>
                 <div class="suggested-info">
-                    <h4>COMMENT S\'ENTRAINER A CODER COMME UN PRO À 11 ANS 💻</h4>
+                    <h4>COMMENT CHARGER ET LIRE DU FLASH SUR INTERNET 🎮</h4>
                     <p>Aboubacar Dev</p>
                 </div>
             </div>
-
-            <!-- Vidéo Suggérée 2 -->
-            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'L\'AVENIR DU E-COMMERCE ET DU MARKETING SUR FLASHZONE ⚡')">
-                <div class="thumbnail">
-                    <video src="https://googleapis.com" muted></video>
-                </div>
+            <div class="suggested-video" onclick="playSuggested('https://youtube.com', 'TUTO COMPLET : ACTIVER LES LECTEURS ET APPRENDRE LE CODE ⚡')">
+                <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:24px;">▶️</div>
                 <div class="suggested-info">
-                    <h4>L\'AVENIR DU E-COMMERCE ET DU MARKETING SUR FLASHZONE ⚡</h4>
+                    <h4>TUTO COMPLET : ACTIVER LES LECTEURS ET APPRENDRE LE CODE ⚡</h4>
                     <p>FlashZone Studio</p>
-                </div>
-            </div>
-
-            <!-- Vidéo Suggérée 3 -->
-            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'TUTO : APPRENDRE LE DESIGN DE SITE DE JEUX VIDÉO 🎮')">
-                <div class="thumbnail">
-                    <video src="https://googleapis.com" muted></video>
-                </div>
-                <div class="suggested-info">
-                    <h4>TUTO : APPRENDRE LE DESIGN DE SITE DE JEUX VIDÉO 🎮</h4>
-                    <p>Business Junior</p>
                 </div>
             </div>
         </aside>
     </div>
 
-    <!-- FENÊTRE DE TÉLÉCHARGEMENT DE VIDÉO LOCALE -->
+    <!-- MODAL CRÉER -->
     <div class="modal" id="createModal">
         <div class="modal-content">
-            <h3>Publier une vidéo locale temporaire</h3>
-            <input type="file" id="video-file-input" accept="video/mp4">
+            <h3>Publier une vidéo locale</h3>
             <input type="text" id="video-title-input" placeholder="Titre de la vidéo...">
             <div class="modal-buttons">
                 <button class="btn-close-modal" onclick="closeCreateModal()">Annuler</button>
@@ -127,10 +87,6 @@
     </div>
 
     <script>
-        function toggleSidebar() {
-            document.getElementById('sidebarMenu').classList.toggle('open');
-            document.getElementById('mainLayout').classList.toggle('shifted');
-        }
         function toggleSubscribe(button) {
             button.classList.toggle('subscribed');
             button.innerText = button.classList.contains('subscribed') ? "Abonné ✓" : "S'abonner";
@@ -140,57 +96,20 @@
             let c = document.getElementById(id);
             if(c) c.innerText = button.classList.contains('liked') ? "30 k" : "29 k";
         }
-        function toggleDislike(button) { button.classList.toggle('liked'); }
-        
         function openCreateModal() { document.getElementById('createModal').style.display = 'flex'; }
         function closeCreateModal() { document.getElementById('createModal').style.display = 'none'; }
 
         function uploadNewVideo() {
-            let fileInput = document.getElementById('video-file-input');
             let titleInput = document.getElementById('video-title-input');
-            if (fileInput.files.length === 0 || titleInput.value.trim() === "") {
-                alert("Veuillez choisir une vidéo et un titre.");
-                return;
-            }
-            let file = fileInput.files[0];
-            let title = titleInput.value.trim();
-            let videoURL = URL.createObjectURL(file);
-
-            let feed = document.getElementById('video-feed');
-            let newCard = document.createElement('div');
-            newCard.classList.add('video-card');
-            let randomId = "like-" + Math.floor(Math.random() * 1000);
-
-            newCard.innerHTML = `
-                <div class="video-player-container"><video class="main-video" controls src="${videoURL}" autoplay></video></div>
-                <div class="video-info"><h2 class="video-title">${title}</h2></div>
-                <div class="interaction-bar">
-                    <button class="btn-like-yt" onclick="toggleLike(this, '${randomId}')">👍 <span id="${randomId}">0</span></button>
-                </div>
-                <div class="comments-section">
-                    <div class="comment-form">
-                        <input type="text" class="comment-input-field" placeholder="Ajouter un commentaire...">
-                        <button class="btn-comment-yt" onclick="addComment(this)">Ajouter</button>
-                    </div>
-                    <div class="comments-list"></div>
-                </div>
-            `;
-            feed.insertBefore(newCard, feed.firstChild);
+            if (titleInput.value.trim() === "") { alert("Veuillez choisir un titre."); return; }
+            alert("Vidéo '" + titleInput.value + "' ajoutée au fil d'actualité !");
             closeCreateModal();
         }
 
-        function addComment(button) {
-            let input = button.previousElementSibling;
-            let text = input.value.trim();
-            if (text !== "") {
-                let list = button.parentElement.nextElementSibling;
-                let item = document.createElement('div');
-                item.className = "comment-item";
-                item.innerHTML = `<strong>Moi</strong><p>${text}</p>`;
-                list.insertBefore(item, list.firstChild);
-                input.value = "";
-            }
-        }
-
         function playSuggested(url, title) {
-            let player = document.getElementById('video-player-core');
+            document.getElementById('video-player-core').src = url;
+            document.getElementById('video-title-core').innerText = title;
+        }
+    </script>
+</body>
+</html>
