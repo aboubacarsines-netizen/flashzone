@@ -31,14 +31,11 @@
         <section class="left-column" id="video-feed">
             <div class="video-card">
                 <div class="video-player-container">
-                    <!-- Vraie vidéo libre de droits (Sintel par la Fondation Blender) -->
-                    <video class="main-video" id="video-player-core" controls autoplay muted>
-                        <source src="https://w3.org" type="video/mp4">
-                        Ton navigateur ne prend pas en charge les vidéos.
-                    </video>
+                    <!-- Lecteur incassable pour la vidéo principale -->
+                    <iframe class="main-video" id="video-player-core" src="https://youtube.com" title="FlashZone Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
-                    <h2 class="video-title" id="video-title-core">SINTEL - TRAILER OFFICIEL (FILM OPEN-SOURCE) 🎬🚀</h2>
+                    <h2 class="video-title" id="video-title-core">SINTEL - FILM D'ANIMATION OPEN-SOURCE COMPLET (FONDATION BLENDER) 🎬🚀</h2>
                     <div class="author-block">
                         <div class="user-profile-img">AD</div>
                         <div class="author-details">
@@ -65,31 +62,31 @@
             </div>
         </section>
 
-        <!-- COLONNE DROITE : LES VRAIES SUGGESTIONS LIBRES DE DROITS -->
+        <!-- COLONNE DROITE : LES VRAIES SUGGESTIONS SANS DROIT D'AUTEUR -->
         <aside class="right-column">
             <h3 class="sidebar-title">À suivre</h3>
             
-            <!-- Vidéo Suggérée 1 : Big Buck Bunny (Officiel, open source) -->
-            <div class="suggested-video" onclick="playSuggested('https://w3.org', 'BIG BUCK BUNNY - LE LAPIN SANS DROIT D\'AUTEUR 🐰')">
+            <!-- Vidéo Suggérée 1 : Big Buck Bunny -->
+            <div class="suggested-video" onclick="playSuggested('https://youtube.com', 'BIG BUCK BUNNY - LE FILM ULTRA CONNU SANS DROIT D\'AUTEUR 🐰')">
                 <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:20px;">▶️</div>
                 <div class="suggested-info">
-                    <h4>BIG BUCK BUNNY - LE LAPIN SANS DROIT D'AUTEUR 🐰</h4>
+                    <h4>BIG BUCK BUNNY - LE FILM ULTRA CONNU SANS DROIT D'AUTEUR 🐰</h4>
                     <p>Fondation Blender</p>
                 </div>
             </div>
 
-            <!-- Vidéo Suggérée 2 : Vidéo Test de la Terre (Officiel) -->
-            <div class="suggested-video" onclick="playSuggested('https://w3.org', 'ESPACE : IMAGES TEST DE LA TERRE DEPUIS L\'ORBITE 🌍')">
+            <!-- Vidéo Suggérée 2 : Tears of Steel -->
+            <div class="suggested-video" onclick="playSuggested('https://youtube.com', 'TEARS OF STEEL - EFFETS SPÉCIAUX ET SCIENCE-FICTION LIBRE 🌍')">
                 <div class="thumbnail" style="background:#222; display:flex; justify-content:center; align-items:center; font-size:20px;">▶️</div>
                 <div class="suggested-info">
-                    <h4>ESPACE : IMAGES TEST DE LA TERRE DEPUIS L'ORBITE 🌍</h4>
-                    <p>NASA Open Source</p>
+                    <h4>TEARS OF STEEL - EFFETS SPÉCIAUX ET SCIENCE-FICTION LIBRE 🌍</h4>
+                    <p>NASA & Blender Studio</p>
                 </div>
             </div>
         </aside>
     </div>
 
-    <!-- FENÊTRE DE TÉLÉCHARGEMENT DE VIDÉO LOCALE -->
+    <!-- FENÊTRE DE TÉLÉCHARGEMENT -->
     <div class="modal" id="createModal">
         <div class="modal-content">
             <h3>Publier une vidéo locale temporaire</h3>
@@ -155,10 +152,9 @@
         function playSuggested(url, title) {
             let player = document.getElementById('video-player-core');
             let t = document.getElementById('video-title-core');
-            player.src = url;
+            // Ajoute les paramètres pour forcer la lecture automatique sur le nouveau lecteur
+            player.src = url + "?autoplay=1&mute=1";
             t.innerText = title;
-            player.load(); // Recharge le lecteur avec la nouvelle vidéo
-            player.play();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
