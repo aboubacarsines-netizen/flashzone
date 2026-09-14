@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashZone - L'application Video Ultime</title>
+    <title>FlashZone - En Ligne</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION SUPÉRIEURE -->
+    <!-- BARRE DE NAVIGATION -->
     <header class="navbar">
         <div class="nav-left">
             <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
@@ -22,25 +22,22 @@
         
         <div class="nav-right">
             <button class="nav-icon-btn" onclick="openCreateModal()">➕ Créer</button>
-            <button class="nav-icon-btn" onclick="alert('🔔 Notifications : Aucune nouvelle notification pour le moment.')">🔔</button>
-            <div class="user-profile" onclick="alert('Profil de l\'administrateur FlashZone')">AD</div>
+            <button class="nav-icon-btn" onclick="alert('🔔 Aucune notification.')">🔔</button>
+            <div class="user-profile">AD</div>
         </div>
     </header>
 
-    <!-- MENU LATÉRAL GAUCHE -->
+    <!-- MENU LATÉRAL -->
     <nav class="sidebar" id="sidebarMenu">
         <a href="#" class="active" onclick="location.reload()">🏠 Accueil</a>
-        <a href="#" onclick="alert('Page Shorts en cours de développement !')">🩳 Shorts</a>
-        <a href="#" onclick="alert('Vos abonnements s\'afficheront ici.')">🔔 Abonnements</a>
+        <a href="#" onclick="alert('Shorts bientôt disponibles !')">🩳 Shorts</a>
+        <a href="#" onclick="alert('Abonnements à venir.')">🔔 Abonnements</a>
         <hr>
-        <a href="#" onclick="alert('Accès à votre bibliothèque locale.')">📚 Bibliothèque</a>
-        <a href="#" onclick="alert('Historique des vidéos visionnées.')">🎬 Vos vidéos</a>
+        <a href="#" onclick="alert('Bibliothèque locale.')">📚 Bibliothèque</a>
     </nav>
 
-    <!-- ZONE PRINCIPALE -->
+    <!-- CONTAINER PRINCIPAL -->
     <div class="main-layout" id="mainLayout">
-        
-        <!-- COLONNE GAUCHE (LECTEUR ET CONTENU PRINCIPAL) -->
         <section class="left-column" id="video-feed">
             <div class="video-card">
                 <div class="video-player-container">
@@ -48,7 +45,6 @@
                         <source src="https://googleapis.com" type="video/mp4">
                     </video>
                 </div>
-
                 <div class="video-info">
                     <h2 class="video-title" id="video-title-core">J'AI CRÉÉ MON PROPRE RÉSEAU SOCIAL À 11 ANS ! 🚀</h2>
                     <div class="author-block">
@@ -57,29 +53,16 @@
                             <span class="video-author">Aboubacar Dev ✓</span>
                             <span class="sub-count">1,2 M d'abonnés</span>
                         </div>
-                        <button class="btn-join" onclick="alert('💎 Option Rejoindre : Devenez membre VIP pour 4,99$/mois !')">Rejoindre</button>
                         <button class="btn-subscribe-yt" onclick="toggleSubscribe(this)">S'abonner</button>
                     </div>
                 </div>
-
-                <!-- LIGNE DE BOUTONS INTERACTIFS -->
                 <div class="interaction-bar">
                     <div class="like-dislike-group">
                         <button class="btn-like-yt" onclick="toggleLike(this, 'like-count-main')">👍 <span id="like-count-main">29 k</span></button>
                         <button class="btn-dislike-yt" onclick="toggleDislike(this)">👎</button>
                     </div>
-                    <button class="btn-action-yt" onclick="alert('↪️ Lien de partage copié dans le presse-papier !')">↪️ Partager</button>
-                    <button class="btn-action-yt" onclick="alert('📥 Vidéo enregistrée dans vos favoris.')">📥 Enregistrer</button>
-                    <button class="btn-action-yt dots-btn" onclick="alert('Plus d\'options bientôt disponibles.')">...</button>
+                    <button class="btn-action-yt" onclick="alert('Lien copié !')">↪️ Partager</button>
                 </div>
-
-                <!-- DESCRIPTION -->
-                <div class="description-box">
-                    <strong>462 000 vues • il y a 2 mois #Programmation</strong>
-                    <p style="margin-top: 8px; color: #ccc;">Bienvenue sur FlashZone ! Créez votre propre vidéo ou testez les commentaires ci-dessous.</p>
-                </div>
-
-                <!-- ESPACE COMMENTAIRES -->
                 <div class="comments-section">
                     <h3>Commentaires</h3>
                     <div class="comment-form">
@@ -91,7 +74,7 @@
             </div>
         </section>
 
-        <!-- COLONNE DROITE (SUGGESTIONS) -->
+        <!-- DROITE -->
         <aside class="right-column">
             <h3 class="sidebar-title">À suivre</h3>
             <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'COMMENT JE CODE SUR MON ORDI 💻')">
@@ -106,13 +89,12 @@
         </aside>
     </div>
 
-    <!-- MODAL POP-UP POUR CRÉER UNE VIDÉO -->
+    <!-- FENÊTRE DE TÉLÉCHARGEMENT -->
     <div class="modal" id="createModal">
         <div class="modal-content">
-            <h3>Publier une vidéo sur FlashZone</h3>
-            <label style="font-size: 12px; color: #aaa; margin-bottom: 4px; display:block;">Sélectionnez une vidéo MP4 :</label>
+            <h3>Publier une vidéo locale</h3>
             <input type="file" id="video-file-input" accept="video/mp4">
-            <input type="text" id="video-title-input" placeholder="Titre de votre vidéo...">
+            <input type="text" id="video-title-input" placeholder="Titre de la vidéo...">
             <div class="modal-buttons">
                 <button class="btn-close-modal" onclick="closeCreateModal()">Annuler</button>
                 <button class="btn-submit-modal" onclick="uploadNewVideo()">Mettre en ligne</button>
@@ -120,79 +102,86 @@
         </div>
     </div>
 
-    <!-- CODE SCRIPT TOTALEMENT FIXÉ -->
     <script>
         function toggleSidebar() {
             document.getElementById('sidebarMenu').classList.toggle('open');
             document.getElementById('mainLayout').classList.toggle('shifted');
         }
-
         function toggleSubscribe(button) {
             button.classList.toggle('subscribed');
-            if (button.classList.contains('subscribed')) {
-                button.innerText = "Abonné ✓";
-                button.style.backgroundColor = "#272727";
-                button.style.color = "#ffffff";
-            } else {
-                button.innerText = "S'abonner";
-                button.style.backgroundColor = "#ffffff";
-                button.style.color = "#0f0f0f";
-            }
+            button.innerText = button.classList.contains('subscribed') ? "Abonné ✓" : "S'abonner";
         }
-
-        function toggleLike(button, countId) {
+        function toggleLike(button, id) {
             button.classList.toggle('liked');
-            button.nextElementSibling.classList.remove('liked');
-            let countSpan = document.getElementById(countId);
-            if(countSpan) {
-                countSpan.innerText = button.classList.contains('liked') ? "30 k" : "29 k";
-            }
+            let c = document.getElementById(id);
+            if(c) c.innerText = button.classList.contains('liked') ? "30 k" : "29 k";
         }
-
-        function toggleDislike(button) {
-            button.classList.toggle('liked');
-            button.previousElementSibling.classList.remove('liked');
-            let countSpan = button.previousElementSibling.querySelector('span');
-            if(countSpan) countSpan.innerText = "29 k";
-        }
-
+        function toggleDislike(button) { button.classList.toggle('liked'); }
+        
         function openCreateModal() { document.getElementById('createModal').style.display = 'flex'; }
         function closeCreateModal() { document.getElementById('createModal').style.display = 'none'; }
 
         function uploadNewVideo() {
             let fileInput = document.getElementById('video-file-input');
             let titleInput = document.getElementById('video-title-input');
-            
             if (fileInput.files.length === 0 || titleInput.value.trim() === "") {
-                alert("⚠️ Erreur : Veuillez choisir un fichier vidéo MP4 valide et écrire un titre.");
+                alert("Veuillez choisir une vidéo et un titre.");
                 return;
             }
-
             let file = fileInput.files[0];
             let title = titleInput.value.trim();
-            let videoURL = URL.createObjectURL(file); 
+            let videoURL = URL.createObjectURL(file);
 
             let feed = document.getElementById('video-feed');
             let newCard = document.createElement('div');
             newCard.classList.add('video-card');
-            
             let randomId = "like-" + Math.floor(Math.random() * 1000);
 
             newCard.innerHTML = `
-                <div class="video-player-container">
-                    <video class="main-video" controls src="${videoURL}" autoplay></video>
-                </div>
-                <div class="video-info">
-                    <h2 class="video-title">${title}</h2>
-                    <div class="author-block">
-                        <div class="user-profile-img" style="background-color:#3ea6ff">Moi</div>
-                        <div class="author-details">
-                            <span class="video-author">Ma Chaîne FlashZone</span>
-                            <span class="sub-count">0 abonné</span>
-                        </div>
-                        <button class="btn-subscribe-yt" onclick="toggleSubscribe(this)">S'abonner</button>
-                    </div>
-                </div>
+                <div class="video-player-container"><video class="main-video" controls src="${videoURL}" autoplay></video></div>
+                <div class="video-info"><h2 class="video-title">${title}</h2></div>
                 <div class="interaction-bar">
-                    <div class="like-dislike-group">
-                        <button class="btn-like-yt" onclick="toggleLike(this, '${randomId}')">👍 <span id="${randomId}">0</span></button>
+                    <button class="btn-like-yt" onclick="toggleLike(this, '${randomId}')">👍 <span id="${randomId}">0</span></button>
+                </div>
+                <div class="comments-section">
+                    <div class="comment-form">
+                        <input type="text" class="comment-input-field" placeholder="Ajouter un commentaire...">
+                        <button class="btn-comment-yt" onclick="addComment(this)">Ajouter</button>
+                    </div>
+                    <div class="comments-list"></div>
+                </div>
+            `;
+            feed.insertBefore(newCard, feed.firstChild);
+            closeCreateModal();
+        }
+
+        function addComment(button) {
+            let input = button.previousElementSibling;
+            let text = input.value.trim();
+            if (text !== "") {
+                let list = button.parentElement.nextElementSibling;
+                let item = document.createElement('div');
+                item.className = "comment-item";
+                item.innerHTML = `<strong>Moi</strong><p>${text}</p>`;
+                list.insertBefore(item, list.firstChild);
+                input.value = "";
+            }
+        }
+
+        function playSuggested(url, title) {
+            document.getElementById('video-player-core').src = url;
+            document.getElementById('video-title-core').innerText = title;
+            document.getElementById('video-player-core').play();
+        }
+
+        function searchVideos() {
+            let query = document.getElementById('global-search').value.toLowerCase();
+            let cards = document.getElementsByClassName('video-card');
+            for(let card of cards) {
+                let title = card.querySelector('.video-title').innerText.toLowerCase();
+                card.style.display = title.includes(query) ? "block" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
