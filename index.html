@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashZone - En Ligne</title>
+    <title>FlashZone - Vraies Vidéos En Ligne</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,12 +41,12 @@
         <section class="left-column" id="video-feed">
             <div class="video-card">
                 <div class="video-player-container">
-                    <video class="main-video" id="video-player-core" controls poster="https://unsplash.com">
+                    <video class="main-video" id="video-player-core" controls autoplay muted poster="https://unsplash.com">
                         <source src="https://googleapis.com" type="video/mp4">
                     </video>
                 </div>
                 <div class="video-info">
-                    <h2 class="video-title" id="video-title-core">J'AI CRÉÉ MON PROPRE RÉSEAU SOCIAL À 11 ANS ! 🚀</h2>
+                    <h2 class="video-title" id="video-title-core">LE MULTI-MILLIONNAIRE FLASHZONE ET LE LAPIN GÉANT ! 🐰🚀</h2>
                     <div class="author-block">
                         <div class="user-profile-img">AD</div>
                         <div class="author-details">
@@ -61,7 +61,7 @@
                         <button class="btn-like-yt" onclick="toggleLike(this, 'like-count-main')">👍 <span id="like-count-main">29 k</span></button>
                         <button class="btn-dislike-yt" onclick="toggleDislike(this)">👎</button>
                     </div>
-                    <button class="btn-action-yt" onclick="alert('Lien copié !')">↪️ Partager</button>
+                    <button class="btn-action-yt" onclick="alert('Lien copié ! Partage ton projet à tes proches.')">↪️ Partager</button>
                 </div>
                 <div class="comments-section">
                     <h3>Commentaires</h3>
@@ -74,25 +74,49 @@
             </div>
         </section>
 
-        <!-- DROITE -->
+        <!-- COLONNE DROITE : LES VRAIES SUGGESTIONS DE VIDÉOS -->
         <aside class="right-column">
             <h3 class="sidebar-title">À suivre</h3>
-            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'COMMENT JE CODE SUR MON ORDI 💻')">
+            
+            <!-- Vidéo Suggérée 1 -->
+            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'COMMENT S\'ENTRAINER A CODER COMME UN PRO À 11 ANS 💻')">
                 <div class="thumbnail">
                     <video src="https://googleapis.com" muted></video>
                 </div>
                 <div class="suggested-info">
-                    <h4>COMMENT JE CODE SUR MON ORDI 💻</h4>
+                    <h4>COMMENT S\'ENTRAINER A CODER COMME UN PRO À 11 ANS 💻</h4>
                     <p>Aboubacar Dev</p>
+                </div>
+            </div>
+
+            <!-- Vidéo Suggérée 2 -->
+            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'L\'AVENIR DU E-COMMERCE ET DU MARKETING SUR FLASHZONE ⚡')">
+                <div class="thumbnail">
+                    <video src="https://googleapis.com" muted></video>
+                </div>
+                <div class="suggested-info">
+                    <h4>L\'AVENIR DU E-COMMERCE ET DU MARKETING SUR FLASHZONE ⚡</h4>
+                    <p>FlashZone Studio</p>
+                </div>
+            </div>
+
+            <!-- Vidéo Suggérée 3 -->
+            <div class="suggested-video" onclick="playSuggested('https://googleapis.com', 'TUTO : APPRENDRE LE DESIGN DE SITE DE JEUX VIDÉO 🎮')">
+                <div class="thumbnail">
+                    <video src="https://googleapis.com" muted></video>
+                </div>
+                <div class="suggested-info">
+                    <h4>TUTO : APPRENDRE LE DESIGN DE SITE DE JEUX VIDÉO 🎮</h4>
+                    <p>Business Junior</p>
                 </div>
             </div>
         </aside>
     </div>
 
-    <!-- FENÊTRE DE TÉLÉCHARGEMENT -->
+    <!-- FENÊTRE DE TÉLÉCHARGEMENT DE VIDÉO LOCALE -->
     <div class="modal" id="createModal">
         <div class="modal-content">
-            <h3>Publier une vidéo locale</h3>
+            <h3>Publier une vidéo locale temporaire</h3>
             <input type="file" id="video-file-input" accept="video/mp4">
             <input type="text" id="video-title-input" placeholder="Titre de la vidéo...">
             <div class="modal-buttons">
@@ -169,19 +193,4 @@
         }
 
         function playSuggested(url, title) {
-            document.getElementById('video-player-core').src = url;
-            document.getElementById('video-title-core').innerText = title;
-            document.getElementById('video-player-core').play();
-        }
-
-        function searchVideos() {
-            let query = document.getElementById('global-search').value.toLowerCase();
-            let cards = document.getElementsByClassName('video-card');
-            for(let card of cards) {
-                let title = card.querySelector('.video-title').innerText.toLowerCase();
-                card.style.display = title.includes(query) ? "block" : "none";
-            }
-        }
-    </script>
-</body>
-</html>
+            let player = document.getElementById('video-player-core');
